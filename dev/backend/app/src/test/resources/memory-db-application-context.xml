@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                 http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                 http://www.springframework.org/schema/context
+                 http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                 http://www.springframework.org/schema/jdbc
+                 http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+                 http://www.springframework.org/schema/data/jpa
+                 http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.querer.libra"/>
+
+    <jdbc:embedded-database id="dataSource" type="HSQL">
+    </jdbc:embedded-database>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="com.querer.libra"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <!--<prop key="hibernate.hbm2ddl.auto">create-drop</prop>-->
+                <prop key="hibernate.hbm2ddl.import_files">
+                    memory-database/hsql/import.sql,
+                    memory-database/hsql/foo.sql,
+                    memory-database/hsql/school.sql
+                </prop>
+            </props>
+        </property>
+        <!-- Another way of indicating that we want to update the schema; Spring
+            calls this _after_ the session factory is created, while the hbm2ddl flag
+            above is processed by Hibernate _during_ creationo f the session factory.
+            <property name="schemaUpdate" value="true" /> -->
+    </bean>
+
+    <!--<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+    <!--</bean>-->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <jpa:repositories base-package="com.querer.libra.app.repository"/>
+
+    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="showSql" value="false"/>
+        <property name="generateDdl" value="true"/>
+        <!--<property name="database" value="MYSQL"/>-->
+    </bean>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+        <!-- spring based scanning for entity classes>-->
+        <property name="packagesToScan" value="com.querer.libra"/>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <!--<prop key="hibernate.hbm2ddl.auto">create-drop</prop>-->
+                <prop key="hibernate.hbm2ddl.import_files">
+                    memory-database/hsql/import.sql,
+                    memory-database/hsql/foo.sql,
+                    memory-database/hsql/school.sql
+                </prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

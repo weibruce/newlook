@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+    <bean id="validationPointcut" class="org.springframework.aop.support.annotation.AnnotationMatchingPointcut">
+        <constructor-arg index="0" value="org.springframework.validation.annotation.Validated" />
+        <constructor-arg index="1" value="true" />
+    </bean>
+    <bean id="validationAdvice" class="org.springframework.validation.beanvalidation.MethodValidationInterceptor">
+        <constructor-arg index="0" ref="validator" />
+    </bean>
+    <aop:config>
+        <!-- set order that method argument validation prior transaction (db connection open). Order 100 < Integer.MAX_VALUE -->
+        <aop:advisor pointcut-ref="validationPointcut" advice-ref="validationAdvice" order="100" />
+    </aop:config>
+
+    <!-- MethodValidationPostProcessor manner. It has side effect that open db connection first then do validation-->
+    <!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>-->
+    <!--<bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>-->
+
+</beans>

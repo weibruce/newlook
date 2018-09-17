@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Properties>
+    <Property name="logRootPath">/logs</Property>
+    <Property name="standardConversionPattern">[%-5p] %d %c - %m%n</Property>
+  </Properties>
+ 
+  <Appenders>
+    <Console name="STDOUT">
+      <PatternLayout pattern="${standardConversionPattern}"/>
+    </Console>
+
+    <RollingFile name="DailyLog" fileName="${logRootPath}/daily-log.log" filePattern="${logRootPath}/daily-log.%d{yyyy-MM-dd}.log">
+      <PatternLayout pattern="${standardConversionPattern}"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+      </Policies>
+    </RollingFile>
+
+    <RollingFile name="PerformanceLog" fileName="${logRootPath}/performance-log.log" filePattern="${logRootPath}/performance-log.%d{yyyy-MM-dd}.log">
+      <PatternLayout pattern="${standardConversionPattern}"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+      </Policies>
+    </RollingFile>
+    
+    <RollingFile name="FeDailyLog" fileName="${logRootPath}/fe-daily-log.log" filePattern="${logRootPath}/fe-daily-log.%d{yyyy-MM-dd}.log">
+      <PatternLayout pattern="${standardConversionPattern}"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+      </Policies>
+    </RollingFile>
+    <RollingFile name="GenerateDailyTaskLog" fileName="${logRootPath}/generate-task-log.log" filePattern="${logRootPath}/generate-task-log.%d{yyyy-MM-dd}.log">
+      <PatternLayout pattern="${standardConversionPattern}"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+      </Policies>
+    </RollingFile>
+    <RollingFile name="IntegrationLog" fileName="${logRootPath}/integration-log.log" filePattern="${logRootPath}/integration-log.%d{yyyy-MM-dd}.log">
+      <PatternLayout pattern="${standardConversionPattern}"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+      </Policies>
+    </RollingFile>
+  </Appenders>
+ 
+  <Loggers>
+    <Root level="info">
+      <AppenderRef ref="STDOUT"/>
+      <AppenderRef ref="DailyLog"/>
+    </Root>
+    
+    <Logger name="com.querer.libra.app.common.perform.log.PerformanceLogAspect" level="debug">
+      <AppenderRef ref="PerformanceLog"/>
+    </Logger>
+    
+    <Logger name="com.querer.libra.app.common.service.impl.LogServiceImpl" level="warn">
+      <AppenderRef ref="FeDailyLog"/>
+    </Logger>
+    
+    <Logger name="com.querer.libra.app.integration.weblog.IntegrationLogAspect" level="debug">
+      <AppenderRef ref="GenerateDailyTaskLog"/>
+    </Logger>
+  </Loggers>
+</Configuration>

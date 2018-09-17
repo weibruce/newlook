@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	/>
+	<meta name="format-detection" content="telephone=no" />
+	<title></title>
+	<meta name="author" content="New Look">
+	<meta name="description" content="New Look">
+	<meta http-equiv="pragma" content="no-cache" />
+
+	<link type="text/css" rel="stylesheet" media="screen" href="src/css/normalize.min.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="src/css/newlook_style.css" />
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?03b5fc33bf534d14453b57b451ae8ac6";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+</head>
+
+<body>
+
+	<div class="newlook-wrapper">
+		<div class="newlook-container">
+			<div class="container-logo"><img src="src/images/logo_w.png"></div>
+			<!-- <div class="container-title">
+				<div class="title-text"> — 新店开业 — </div>
+			</div> -->
+
+			<div class="container-animate">
+				<div class="animate-bg active"></div>
+				<div class="animate-bg2 active"></div>
+				<div class="animate-text"><img src="src/images/home_animate_text.png"></div>
+			</div>
+
+			<div id="banner" class="container-banner"></div>
+
+			<div class="container-box">
+				<div id="ruleBtn" class="container-rulebtn">活动细则</div>
+				<div id="bagBtn" class="container-bagbtn">我的礼袋</div>
+				<div class="container-prize">
+					<ul class="container-prize-ul">
+						<li>
+							<img src="src/images/20171111/1000rmb.jpg" />
+						</li>
+						<li>
+							<img src="src/images/20171111/lipstick.jpg" />
+						</li>
+						<li>
+							<img src="src/images/20171111/20off.jpg" />
+						</li>
+						<li>
+							<img src="src/images/20171111/15off.jpg" />
+						</li>
+						<li>
+							<img src="src/images/20171111/10off.jpg" />
+						</li>
+					</ul>
+				</div>
+
+				<div class="container-intro"></div>
+			</div>
+
+			<div id="prizeModal" class="container-modal">
+				<div class="container-modal-content">
+					<div class="modal-close"></div>
+					<div class="modal-title">恭喜获得<span id="prizeName"></span></div>
+					<div id="prizeDesc" class="modal-desc"></div>
+					<div id="prizeImg" class="modal-img"></div>
+					<div class="modal-share-btn">邀朋友试手气</div>
+				</div>
+			</div>
+
+			<div id="thanksModal" class="container-modal">
+				<div class="container-modal-content">
+					<div class="modal-close"></div>
+					<div id="thanksTitle" class="modal-thanks-title">今天的摇奖次数已用完</div>
+					<div class="modal-img icon-frown"></div>
+					<div class="modal-thanks-desc">谢谢参与</div>
+					<div class="modal-share-btn">邀朋友试手气</div>
+				</div>
+			</div>
+
+			<div id="errorModal" class="container-modal">
+				<div class="container-modal-content">
+					<div class="modal-thanks-title">当前访问用户较多</div>
+					<div class="modal-img icon-frown"></div>
+					<div class="modal-thanks-desc">请刷新页面重试</div>
+					<div id="refreshBtn" class="modal-share-btn">刷新</div>
+				</div>
+			</div>
+
+			<div id="expireModal" class="container-modal">
+				<div class="container-modal-content">
+					<div id="expireTitle" class="modal-thanks-title">活动已结束</div>
+					<div id="expireDate" class="modal-thanks-date">更多活动请关注NEW LOOK官微</div>
+					<div class="modal-img icon-qrcode"><img src="src/images/newlook_qrcode1.jpg"></div>
+					<div class="modal-thanks-desc">（长按二维码即可关注）</div>
+				</div>
+			</div>
+
+			<div id="shareModal" class="container-modal">
+				<div class="container-modal-content">
+					<div class="modal-share">
+						<div class="modal-share-close"></div>
+						<div id="shareFriends" class="modal-share-img"><img src="src/images/share_txt.png"></div>
+					</div>
+				</div>
+			</div>
+
+			<div id="ruleModal" class="container-modal-rule">
+				<div class="container-modal-rule-content">
+					<div class="rule-close"></div>
+					<div class="rule-content">
+						<div class="rule-text">
+							<h2>活动参与方式：</h2>
+							<p>一、用户通过微信授权后，进入活动页面，完成活动即可参与抽奖，有机会获得活动奖品。</p>
+							<p>二、中奖后，用户在活动首页-【我的礼袋】查看中奖奖品。</p>
+							<p>三、奖品使用规则请详见以下【使用规则】。</p>
+							<br />
+							<h2>活动奖品及奖品领取/使用规则：</h2>
+							<p class="gray-p">一、活动时间：</p>
+							<p>2017年11月14日-11月23日</p>
+							<p class="gray-p">二、活动奖品：</p>
+							<p>唇膏（共8个），具体款式以实际派发奖品为准</p>
+							<p>NEW LOOK 1000元 现金券（1张）</p>
+							<p>NEW LOOK 9折 优惠券（不限）</p>
+							<p>NEW LOOK 85折 优惠券（不限）</p>
+							<p>NEW LOOK 8折 优惠券（不限）</p>
+							<p>所有奖品由后台随机抽取，以后台数据库记录为准。</p>
+							<p class="gray-p">三、奖品领取/使用规则：</p>
+							<ul class="rule-ul">
+								<li>实物奖品：自活动结束之日起10个工作日内，由主办方通知获奖者确认奖品寄送地址并安排快递。获奖者需提供相关资料以审核获奖身份（包括但不仅于姓名、手机、身份证等），按主办方规定方式领取奖品。如由中奖者个人原因（包括但不仅于填写错误信息，不接听或不回复确认配送地址等）导致未能领取奖品，主办方将不予补发或赔偿。</li>
+								<li>优惠券使用时间：2017年11月14日-11月23日的正常营业时间，优惠券不可与任何其他优惠同时使用且所购商品均为正价商品，优惠券不能进行兑现，不可累积使用，复制或过期的此券不可使用。</li>
+								<li>已使用优惠券的交易若发生退货，优惠券金额不予退还，用户无法再次使用优惠券。</li>
+								<li>已使用优惠券的交易若发生换货，需用户按照上述规则先办理退货，再重新进行购买，用户无法再次使用优惠券。</li>
+								<li>本次活动所有优惠券仅限NEW LOOK全国门店使用。</li>
+								<li>同一用户每天仅可抽奖两次；同一微信号、同一手机号、同一银行卡号、同一身份证号、同一手机设备，符合其中任一条件者视为同一用户。</li>
+								<li>如因商品质量问题导致退换货，则按照国家相关规定进行办理。</li>
+								<li>主办方有权在法律允许的范围内决定自主改变或收回该券。</li>
+								<li>对本次活动优惠券使用如有疑问的，请联系主办方。</li>
+							</ul>
+							<p class="gray-p">四、活动须知：</p>
+							<ul class="rule-ul">
+								<li>凡参与本活动，均视为已阅读并同意本活动细则。</li>
+								<li>主办方工作人员及家属、相关代理商不得参与本次活动。</li>
+								<li>用户由于个人原因导致奖券遗失或失效，主办方将不予赔偿或补发。</li>
+								<li>中奖者在领取、使用各奖项之过程中发生任何之伤害与损失，该等伤害非因主办方过失导致，主办方不承担任何责任。</li>
+								<li>活动参与者如有任何方式的作弊行为包括但不限于造假或刷奖等行为，一经发现，主办方有权立即取消该获奖者获奖资格而无需提前通知。</li>
+								<li>所有中奖者个人所得税自理。</li>
+								<li>在法律所允许的最大限度内主办方保留不时地修订本活动条款的权利。</li>
+								<li>奖品抽取的权利以及确认排名的权利归纽洛克商业（上海）有限公司所有，中奖纪录以系统后台数据库记录为准。</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script src="src/js/jquery-1.10.1.min.js"></script>
+	<script src="src/js/main.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$.fn.newlookOpening({
+				host: 'www.5hac.com',
+				port: '80',
+				path: '/',
+				project: '/querer',
+			});
+
+		});
+	</script>
+
+</body>
+
+</html>

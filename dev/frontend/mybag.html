@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	/>
+	<meta name="format-detection" content="telephone=no" />
+	<title></title>
+	<meta name="author" content="New Look">
+	<meta name="description" content="New Look">
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+
+	<link type="text/css" rel="stylesheet" media="screen" href="src/css/normalize.min.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="src/css/newlook_style.css" />
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?03b5fc33bf534d14453b57b451ae8ac6";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+</head>
+
+<body>
+
+	<div class="newlook-wrapper">
+		<div class="newlook-container">
+			<div class="container-logo"><img src="src/images/logo_w.png"></div>
+			<div class="container-title">
+				<div class="title-text title-bag">我的礼袋</div>
+			</div>
+
+			<div id="bagLoading" class="container-bag-loading">
+				<div class="loading-title">数据加载中...</div>
+			</div>
+
+			<div id="bagList" class="container-bag-list">
+			</div>
+
+			<div id="bagModal" class="bag-modal">
+				<div class="bag-modal-content">
+					<div class="modal-close"></div>
+					<div class="modal-title">恭喜获得<span id="bagName"></span></div>
+					<div id="bagDesc" class="modal-desc"></div>
+					<div id="bagImg" class="modal-img"></div>
+					<div id="barcodeSvg" class="modal-barcode">
+						<svg id="code128" />
+						<div id="barcodeType" class="modal-barcode-type"></div>
+					</div>
+					<div id="confirmBtn" class="modal-confirm-btn">立即领奖并填写联系方式</div>
+					<div id="bagModalComment" class="modal-comments">*领到奖品后，由店员点击核销</div>
+
+					<div id="confirmCover" class="modal-confirm">
+						<div class="modal-close2"></div>
+						<div id="destroyBtn" class="modal-destroy-btn">确认核销</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="shakeModal" class="bag-modal">
+				<div class="container-modal-content">
+					<div class="modal-close"></div>
+					<div class="modal-shake-desc">你还没有领过惊喜<br />快来摇一摇吧！</div>
+					<div class="modal-shake-img"></div>
+					<div class="modal-shake-logo"><img src="src/images/logo_b.png"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script src="src/js/jquery-1.10.1.min.js"></script>
+	<script src="src/js/JsBarcode.code128.min.js"></script>
+	<script src="src/js/main.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$.fn.newlookMybag({
+				host: 'www.5hac.com',
+				port: '80',
+				path: '/',
+				project: '/querer',
+			});
+
+		});
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+﻿DROP DATABASE IF EXISTS `querer`;
+
+CREATE DATABASE IF NOT EXISTS `querer` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+USE `querer`;

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-4.0.xsd
+ http://www.springframework.org/schema/task
+ http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <context:annotation-config/>
+    <task:annotation-driven/>
+    
+    <context:component-scan base-package="com.querer.libra">
+        <context:exclude-filter type="regex" expression="com.querer.libra.*.mvc.controller.*"/>
+    </context:component-scan>
+
+    <bean id="springApplicationContext" class="com.querer.libra.platform.core.spring.SpringApplicationContext"/>
+
+    <bean id="springPropertiesUtil" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:spring/dal/jdbc.properties</value>
+                <!--<value>classpath:spring/dal/spy.properties</value>-->
+                <value>classpath:spring/dal/hibernate.cfg.properties</value>
+
+                <value>classpath:appconfig/setting.properties</value>
+                <value>classpath:appconfig/application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- common -->
+    <import resource="spring/common/spring-common-beans.xml"/>
+    <import resource="spring/common/spring-cache.xml"/>
+    <import resource="spring/common/spring-bean-validation.xml"/>
+
+    <!-- module -->
+    <import resource="spring/dal/spring-dal.xml"/>
+
+    <import resource="spring/exception/spring-exception-handling.xml"/>
+    <import resource="spring/web/spring-web-i18n.xml"/>
+    
+    <!-- service -->
+    <import resource="spring/service/spring-service-beans.xml"/>
+    <import resource="spring/service/spring-bean-mapper.xml"/>
+
+</beans>

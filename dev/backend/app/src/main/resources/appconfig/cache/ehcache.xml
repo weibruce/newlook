@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         updateCheck="true"
+         monitoring="autodetect"
+         dynamicConfig="true">
+    <!--maxBytesLocalHeap="250M">-->
+    
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache maxElementsInMemory="1000"
+                  eternal="false"
+                  timeToIdleSeconds="60"
+                  timeToLiveSeconds="300"
+                  overflowToDisk="false"
+                  maxElementsOnDisk="10000"
+                  diskPersistent="false"
+                  diskExpiryThreadIntervalSeconds="120"/>
+
+    <cache name="querer.app.event"
+           maxElementsInMemory="100"
+           eternal="false"
+           timeToIdleSeconds="600"
+           timeToLiveSeconds="3600"
+           memoryStoreEvictionPolicy="LFU"/>
+
+    <cache name="querer.app.event.rules"
+           maxElementsInMemory="1000"
+           eternal="false"
+           timeToIdleSeconds="600"
+           timeToLiveSeconds="3600"
+           memoryStoreEvictionPolicy="LFU"/>
+</ehcache>

@@ -1,0 +1,65 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <!-- all Hibernate configuration are deprecated -->
+
+    <!-- Data Source -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.connection.driver_class}"/>
+        <property name="jdbcUrl" value="${jdbc.connection.url}"/>
+        <property name="user" value="${jdbc.connection.username}"/>
+        <property name="password" value="${jdbc.connection.password}"/>
+        <!-- connection pool setting -->
+        <property name="minPoolSize" value="5"/>
+        <property name="maxPoolSize" value="100"/>
+        <property name="initialPoolSize" value="5"/>
+        <property name="idleConnectionTestPeriod" value="900"/>
+        <property name="maxIdleTime" value="1800"/>
+        <property name="checkoutTimeout" value="1000"/>
+    </bean>
+
+    <!-- Session Factory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan">
+            <list>
+                <!--<value>com.querer.libra.platform.core.domain.entity</value>-->
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <!--  Hibernate Configuration Properties -->
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.generate_statistics">${hibernate.generate_statistics}</prop>
+
+                <!-- Hibernate JDBC and Connection Properties -->
+                <prop key="hibernate.default_batch_fetch_size">${hibernate.default_batch_fetch_size}</prop>
+                <prop key="hibernate.max_fetch_depth">${hibernate.max_fetch_depth}</prop>
+                <prop key="hibernate.connection.useUnicode">${hibernate.connection.useUnicode}</prop>
+                <prop key="hibernate.connection.characterEncoding">${hibernate.connection.characterEncoding}</prop>
+                <prop key="hibernate.connection.charSet">${hibernate.connection.charSet}</prop>
+                <prop key="hibernate.connection.release_mode">${hibernate.connection.release_mode}</prop>
+
+                <!-- Hibernate Cache Properties -->
+                <prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+                <prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+                <prop key="hibernate.cache.use_structured_entries">${hibernate.cache.use_structured_entries}</prop>
+
+                <!-- Hibernate Transaction Properties -->
+
+                <!-- Hibernate Miscellaneous Properties -->
+                <prop key="javax.persistence.validation.mode">${javax.persistence.validation.mode}</prop>
+
+                <prop key="hibernate.hbm2ddl.auto">none</prop>
+                <!-- for UT ONLY -->
+                <!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
+                <!--<prop key="hibernate.hbm2ddl.import_files">-->
+                <!--spring/dal/import.sql-->
+                <!--</prop>-->
+            </props>
+        </property>
+    </bean>
+
+</beans>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- GLOBAL exception handler resolver -->
+    <bean id="restExceptionResolver" class="com.querer.libra.platform.core.spring.rest.RestExceptionHandler">
+        <property name="logBusinessException" value="${log.business.exception.mode}"/>
+        <property name="order" value="100"/>
+        <property name="errorResolver">
+            <bean class="com.querer.libra.platform.core.spring.rest.error.DefaultRestErrorResolver">
+                <!--<property name="developmentMode" value="DEBUG"/>-->
+                <property name="developmentMode" value="${system.development.mode}"/>
+                <property name="localeResolver" ref="localeResolver"/>
+                <property name="defaultMoreInfoUrl" value="mailto:admin@mycompany.com"/>
+                <property name="exceptionMappingDefinitions" ref="exceptionMappingDefinitionProperties"/>
+                <!--<property name="exceptionMappingDefinitions">-->
+                    <!--<map>-->
+                        <!--&lt;!&ndash; 404 &ndash;&gt;-->
+                        <!--<entry key="com.stormpath.blog.spring.mvc.rest.exhandler.UnknownResourceException" value="404, _exmsg"/>-->
+
+                        <!--<entry key="com.querer.libra.app.exception.BrandNotExistException" value="504, _exmsg"/>-->
+                        <!--<entry key="com.querer.libra.app.exception.DuplicateBrandsException" value="505, 50005, duplicate brand, [dev] duplicate brand,  more info please contact admin"/>-->
+
+                        <!--&lt;!&ndash; 500 (catch all): &ndash;&gt;-->
+                        <!--<entry key="Throwable" value="500"/>-->
+                    <!--</map>-->
+                <!--</property>-->
+            </bean>
+        </property>
+    </bean>
+    <util:properties id="exceptionMappingDefinitionProperties" location="classpath:appconfig/exception/exception-mapping.properties"/>
+
+</beans>

@@ -1,0 +1,151 @@
+
+服务器www.5hac.com
+
+sample:
+www.5hac.com/querer/service/events/nl002
+
+
+
+Event
+
+// 根据开业代码获得当前活动信息
+[GET] /service/events/{openingCode}
+sample:
+127.0.0.1:8080/querer/service/events/nl001
+
+{
+    "success": true,
+    "status": 200,
+    "data": {
+        "oid": 1,
+        "name": "长宁店开业活动",
+        "storeName": "长宁店",
+        "description": "有抽奖",
+        "startTime": 1500307201000,
+        "endTime": 1500739199000,
+        "enabled": true,
+        "openingCode": "nl001"
+    }
+}
+
+// 活动开始时间，结束时间，活动开始/结束状态
+
+
+User Coupon
+
+// 抽奖
+[POST] /service/coupons/draw
+sample:
+127.0.0.1:8080/querer/service/coupons/draw
+
+{
+	"uid": "84be504f0002605c0000000459731a93",
+	"occurTime": 1500715852754,
+	"event": {
+		"openingCode": "nl001"
+	}
+}
+
+
+// 查询当前活动的用户抽到的奖品列表
+[GET] /service/coupons/{openingCode}?uid=?
+sample:
+127.0.0.1:8080/querer/service/coupons/nl001?uid=84be504f0002605c0000000459731a93
+{
+    "success": true,
+    "status": 200,
+    "data": {
+        "oid": 1,
+        "name": "长宁店开业活动",
+        "storeName": "长宁店",
+        "description": "有抽奖",
+        "startTime": 1500307201000,
+        "endTime": 1500739199000,
+        "enabled": true,
+        "openingCode": "nl001"
+    }
+}
+
+
+
+// 使用奖品
+[PUT] /service/coupons/use
+sample:
+127.0.0.1:8080/querer/service/coupons/use
+
+{
+	"oid": 1,
+	"uid": "84be504f0002605c0000000459731a93",
+	"usedOccurTime": 1500715852754
+}
+
+
+
+
+// 分享活动页面
+[POST] /service/shared-events/share
+sample:
+127.0.0.1:8080/querer/service/shared-events/share
+
+{
+	"uid": "84be504f0002605c0000000459731a93",
+	"event": {
+		"openingCode": "nl001"
+	},
+	"sharedOccurTime": 1500715852754
+}
+share with friend
+
+
+
+Shipping Address 收货地址
+
+// 收货地址
+[POST] /service/shipping-addresses
+sample:
+127.0.0.1:8080/querer/service/shipping-addresses
+
+{
+    "userCouponOid": 123,
+	"uid": "84be504f0002605c0000000459731a93",
+    "name": "张三",
+    "cellphone": "13512345678",
+    "address": "张江"
+}
+
+
+
+// 微信公众号集成
+
+// 微信公众号入口URL
+[GET] service/wechat/from?state=qrcode
+[GET] service/wechat/from?state=share
+
+// 获得用户openid
+[GET] service/wechat/access-token
+
+// 获得js-sdk ticket的签名配置
+[GET] service/wechat/jsconfig?url=http://www.5hac.com/?openId=ertweert23452345
+
+二维码进入
+http://www.5hac.com/querer/service/wechat/from?state=qrcode
+分享进入
+http://www.5hac.com/querer/service/wechat/from?state=share
+
+
+ErrorCode and Exception:
+com.querer.libra.app.event.exception.ParameterRequiredException=500,0x010201001
+
+com.querer.libra.app.event.exception.EventNotFoundException=500,0x010202001
+com.querer.libra.app.event.exception.EventClosedException=500,0x010202002
+com.querer.libra.app.event.exception.InvalidEventException=500,0x010202003
+
+com.querer.libra.app.event.exception.UserCouponNotFoundException=500,0x010203001
+com.querer.libra.app.event.exception.InvalidUserCouponException=500,0x010203002
+com.querer.libra.app.event.exception.UserCouponExpiredException=500,0x010203003
+com.querer.libra.app.event.exception.NotYourCouponException=500,0x010203004
+com.querer.libra.app.event.exception.UserCouponIsUsedException=500,0x010203005
+com.querer.libra.app.event.exception.ExhaustedDrawChancesException=500,0x010203006
+
+com.querer.libra.app.event.exception.SharedEventNotFoundException=500,0x010204001
+

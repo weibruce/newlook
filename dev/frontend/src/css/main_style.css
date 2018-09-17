@@ -1,0 +1,144 @@
+/*** CSS Global ***/
+html, body, header, footer, div { margin:0; padding:0; }
+ol, ul { margin:0; padding:0; list-style: none; }
+h1, h2, h3, h4, h5, p { margin: 0; padding: 0; }
+a{ text-decoration:none; cursor: pointer; font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", STXihei, STHeiti, Heiti, SimSun, sans-serif; }
+a:hover{ text-decoration: none; }
+img{ display: block; border: 0 none; }
+img, object { width: 100%; }
+
+span.black_span { color: #000; }
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; } /* Hide from IE Mac \*/
+.clearfix { display: block; } /* End hide from IE Mac */
+.none { display: none; } /* End Clearfix */
+
+html, body { overflow: hidden; }
+body { background: #2c2d32; text-align: center; font-size: 14px; line-height: 1.2; color: #505460; font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", STXihei, STHeiti, Heiti, SimSun, sans-serif; }
+
+
+
+/*** Animation keyframes ***/
+@-webkit-keyframes fadeout { from { opacity: 1;} to { opacity: 0;} }
+@-webkit-keyframes fadein { from { opacity: 0;} to { opacity: 1;} }
+@-webkit-keyframes zoomin { from { -webkit-transform: scale(0.5); } to { -webkit-transform: scale(1); } }
+@-webkit-keyframes zoomout { from { -webkit-transform: scale(1); } to { -webkit-transform: scale(1.2); } }
+@-webkit-keyframes shake { 0% {-webkit-transform: scale(1);} 30% {-webkit-transform: scale(1.2);} 40%{-webkit-transform: scale(1);} 50% {-webkit-transform: scale(1.1);} 55% {-webkit-transform: scale(1);} 100% {-webkit-transform: scale(1);} }
+
+/*** Brand Global ***/
+.container { }
+.content { margin: 0 auto; width: 70%; max-width: 750px; overflow: hidden; }
+.content img.content_bg { display: block; }
+
+.content.game_brand { background: #2c2d32; }
+.game_brand .step { position: relative; display: none; background: url("../images/brand/step_grain_bg.jpg") no-repeat center top; background-size: 100%; }
+	.step .step_level { position: absolute; left: 10%; top: 22%; width: 80%; height: 10px; }
+	.step .step_level .level_item { position: relative; float: left; margin-right: 2%; width: 7%; height: 8px; background: #808080;
+		-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+	.step .step_level .level_item.item_passed { background: #f4d0ae; }
+	.step .step_level .level_item .item_flash { width: 100%; height: 8px; background: #808080;
+		-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+	.step .step_level .level_item.item_current .item_flash { background: #ffffff; }
+	.step .step_level .level_item.item_fail .item_flash { background: #ff0000; }
+	.step .step_level .level_item .item_wx { position: absolute; left: 50%; top: -60px; margin-left: -22px; width: 44px; height: 56px; background: url("../images/brand/cur_avatar_boder.png") no-repeat center top; background-size: 100%; }
+	.step .step_level .level_item .item_wx img { position: absolute; left: 2px; top: 2px; width: 40px; height: 40px; background: #808080; 
+		-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; }
+	.step .step_level .level_item .item_wx.wx_passed { left: 50%; top: -50px; margin-left: -18px; width: 36px; height: 36px; background-image: none; }
+	.step .step_level .level_item .item_wx.wx_passed img { left: 1px; top: 1px; width: 34px; height: 34px; border: 1px #666666 solid;
+		-webkit-border-radius: 19px; -moz-border-radius: 19px; border-radius: 19px; }
+	.step .step_level .level_gift { float: left; margin-top: -5%; width: 9%; }
+	
+	.step .step_toptxt { position: absolute; left: 0; top: 8%; width: 100%; font-size: 16px; text-align: center; color: #ffffff; }
+	.step .step_toptxt span.bq_span { font-size: 30px; }
+	.step .step_toptxt img.top_icon { position: absolute; left: 50%; top: 0; margin-left: -30px; width: 60px; }
+	.step .step_title { position: absolute; left: 10%; top: 26%; width: 80%; font-size: 18px; text-align: center; color: #ffffff; }
+	.step .step_subtitle { position: absolute; left: 10%; top: 75%; width: 80%; font-size: 12px; text-align: center; color: #999999; }
+	.step .step_giftimg { position: absolute; left: 15%; top: 43%; width: 70%; }
+	.step .step_btn, .step .step_share_btn { position: absolute; left: 25%; top: 81%; width: 50%; height: 40px; line-height: 40px; font-size: 16px; color: #333333; cursor: pointer; background: #f4d0ae;
+		-webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; }
+	.step .step_bottom_btn { position: absolute; left: 25%; top: 92%; width: 50%; height: 20px; font-size: 12px; color: #f4d0ae; }
+	.step .step_bottom_btn a { margin: 0 10px; font-size: 12px; color: #f4d0ae; }
+
+.game_brand .step.step1 { }
+	.step1 .step_logo { position: absolute; left: 38%; top: 3%; width: 24%; }
+	.step1 .step_show_btn { position: absolute; left: -12px; top: 3%; width: 80px; height: 22px; text-align: center; line-height: 22px; font-size: 12px; color: #333333; background: #ffffff;
+		-webkit-border-radius: 14px; -moz-border-radius: 14px; border-radius: 14px; }
+	.step1 .step_level { top: 22%; }
+	.step1 .step_title { top: 26%; }
+	/* active */
+	.step1.active .step_level .item_current .item_flash { animation:itemflash 1s both infinite; -webkit-animation:itemflash 1s both infinite; }
+		@-webkit-keyframes itemflash {
+            0%{ opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+	.step1.active .step_level .level_gift { animation:giftshake1 1s both infinite; -webkit-animation:giftshake1 1.5s both infinite; }
+		@-webkit-keyframes giftshake1 {
+            0%{ -webkit-transform: translateY(0px) rotate(0deg) scale(1); }
+            40%{ -webkit-transform: translateY(0px) rotate(5deg) scale(1); }
+            45%{ -webkit-transform: translateY(0px) rotate(-5deg) scale(0.9); }
+            50%{ -webkit-transform: translateY(0px) rotate(0deg) scale(1); }
+            55%{ -webkit-transform: translateY(0px) rotate(-5deg) scale(0.9); }
+            60%{ -webkit-transform: translateY(0px) rotate(5deg) scale(1); }
+            100%{ -webkit-transform: translateY(0px) rotate(0deg) scale(1); }
+        }
+	
+	/* active */
+	.step2.active .step2_timebar img.timebar_active { animation:timechange 60s both linear; -webkit-animation:timechange 45s both linear; }
+		@keyframes timechange { from{ width: 100%;  } to{ width: 0%; }}
+		@-webkit-keyframes timechange { from{ width: 100%;  } to{ width: 0%; }}
+	
+	.step2.maskactive .step2_mask .swipe_finger { animation:fingerswipe 2s both infinite; -webkit-animation:fingerswipe 2s both infinite; }
+		@-webkit-keyframes fingerswipe {
+            0% { -webkit-transform: rotate(-25deg); }
+            50% { -webkit-transform: rotate(30deg); }
+            100% { -webkit-transform: rotate(-25deg); }
+        }
+	.step2.maskactive .step2_mask .swipe_arrow { animation:arrowswipe 2s both infinite; -webkit-animation:arrowswipe 2s both infinite; }
+		@-webkit-keyframes arrowswipe {
+            0% { -webkit-transform: translateX(0px); }
+            50% { -webkit-transform: translateX(5px); }
+            100% { -webkit-transform: translateX(0px); }
+        }
+	.step2.maskactive .step2_mask .zoom_finger { animation:fingerzoom 2s both infinite; -webkit-animation:fingerzoom 2s both infinite; }
+		@-webkit-keyframes fingerzoom {
+            0% { -webkit-transform: scale(1); }
+            50% { -webkit-transform: scale(0.9); }
+            100% { -webkit-transform: scale(1); }
+        }
+	.step2.maskactive .step2_mask .zoom_arrow_up { animation:arrowzoomup 2s both infinite; -webkit-animation:arrowzoomup 2s both infinite; }
+		@-webkit-keyframes arrowzoomup {
+            0% { -webkit-transform: translateY(0px) rotate(180deg);}
+            50% { -webkit-transform: translateY(8px) rotate(180deg);}
+            51% { -webkit-transform: translateY(8px) rotate(0deg);}
+            100% { -webkit-transform: translateY(0px) rotate(0deg);}
+        }
+	.step2.maskactive .step2_mask .zoom_arrow_down { animation:arrowzoomdown 2s both infinite; -webkit-animation:arrowzoomdown 2s both infinite; }
+		@-webkit-keyframes arrowzoomdown {
+            0% { -webkit-transform: translateY(0px) rotate(180deg);}
+            50% { -webkit-transform: translateY(-5px) rotate(180deg);}
+            51% { -webkit-transform: translateY(-5px) rotate(0deg);}
+            100% { -webkit-transform: translateY(0px) rotate(0deg);}
+        }
+
+
+/* PC屏幕 */
+@media screen and (min-width: 1200px) {
+	html, body { min-width: 1200px; }
+}
+@media screen and (min-width: 960px) and (max-width: 1200px) {
+    html, body { min-width: 960px; }
+}
+
+/* iPad屏幕 */
+@media screen and (max-width: 768px) {
+.content { width: 100%; }
+
+.content.game_brand {}
+.game_brand .step_image { position: absolute; left: 50%; top: 0%; margin-left: -320px; width: 640px; height: 1024px; }
+.game_brand .step_image img { position: absolute; }
+	
+.game_brand .step.step2 { background: #2c2d32; }
+
+
+
